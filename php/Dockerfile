@@ -1,4 +1,6 @@
-FROM php:7.0-fpm
+FROM php:7.0-fpm-alpine
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql
-RUN docker-php-ext-enable mysqli
+RUN apk add --no-cache postgresql-dev
+
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
+RUN docker-php-ext-install pdo pdo_pgsql pgsql

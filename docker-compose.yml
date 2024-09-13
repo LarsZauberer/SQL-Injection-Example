@@ -13,5 +13,15 @@ services:
       - 9000
     volumes:
       - .:/var/www/html
-    
-    
+  postgres:
+    image: postgres:latest
+    container_name: db
+    ports:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/pgdata
+  adminer:
+    image: adminer:latest
+    ports:
+      - 8080:8080
