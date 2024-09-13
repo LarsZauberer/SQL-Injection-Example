@@ -1,0 +1,17 @@
+services:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+  php:
+    build: ./php
+    container_name: php-server
+    ports:
+      - 9000
+    volumes:
+      - .:/var/www/html
+    
+    
